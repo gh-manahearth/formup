@@ -1,0 +1,16 @@
+{
+  "name": "formup",
+  "version": "1.0.0",
+  "description": "Forms, one question at a time — an AI form helper for neurodivergent adults",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.81.0",
+    "express": "^5.2.1"
+  }
+}

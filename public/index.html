@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormUp — Forms, one question at a time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FormUp</h1>
+      <p class="tagline">Forms, one question at a time.</p>
+    </header>
+
+    <main>
+      <!-- Step 1: Paste form -->
+      <div id="step-input" class="step">
+        <div class="input-section">
+          <label for="form-text">Paste your form here</label>
+          <p class="input-hint">Copy the questions from any form — medical, school, government, whatever you need to fill out.</p>
+          <div class="textarea-wrap">
+            <textarea
+              id="form-text"
+              placeholder="Paste the form questions here..."
+              rows="8"
+            ></textarea>
+          </div>
+        </div>
+        <button id="parse-btn" class="primary-btn">Break it down</button>
+      </div>
+
+      <!-- Step 2: Answer questions one at a time -->
+      <div id="step-questions" class="step hidden">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p id="progress-text" class="progress-text"></p>
+
+        <div id="question-card" class="question-card">
+          <div id="section-label" class="section-label hidden"></div>
+          <p id="question-text" class="question-text"></p>
+          <p id="original-field" class="original-field"></p>
+
+          <div id="answer-area" class="answer-area">
+            <!-- text input -->
+            <div id="input-text-wrap" class="textarea-wrap">
+              <input type="text" id="answer-text" class="answer-input" placeholder="Type your answer...">
+              <button id="mic-btn" class="mic-btn" title="Speak your answer" aria-label="Voice input">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="1" width="6" height="11" rx="3"/>
+                  <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </button>
+            </div>
+            <!-- long text input -->
+            <div id="input-long-wrap" class="textarea-wrap hidden">
+              <textarea id="answer-long" class="answer-textarea" placeholder="Type your answer..." rows="3"></textarea>
+              <button id="mic-btn-long" class="mic-btn" title="Speak your answer" aria-label="Voice input">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="1" width="6" height="11" rx="3"/>
+                  <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+              </button>
+            </div>
+            <!-- choice buttons -->
+            <div id="input-choices" class="choice-buttons hidden"></div>
+            <!-- yes/no buttons -->
+            <div id="input-yesno" class="choice-buttons hidden">
+              <button class="choice-btn" data-value="Yes">Yes</button>
+              <button class="choice-btn" data-value="No">No</button>
+            </div>
+          </div>
+          <p id="mic-status" class="mic-status hidden"></p>
+        </div>
+
+        <div class="question-nav">
+          <button id="back-btn" class="secondary-btn" disabled>Back</button>
+          <button id="skip-btn" class="text-btn">Skip</button>
+          <button id="next-btn" class="primary-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Results -->
+      <div id="step-results" class="step hidden">
+        <div class="results-header">
+          <h2>All done!</h2>
+          <p class="results-subtitle">Here are your answers, ready to copy back into the form.</p>
+        </div>
+        <div id="results-content" class="results-content"></div>
+        <div class="results-actions">
+          <button id="copy-all-btn" class="primary-btn">Copy all</button>
+          <button id="start-over-btn" class="secondary-btn">Start over</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-left">
+        <label class="font-toggle">
+          <input type="checkbox" id="dyslexia-font">
+          <span>Dyslexia-friendly font</span>
+        </label>
+      </div>
+      <div class="footer-right">
+        <p class="privacy-note">Your form data is never stored. Text is processed and immediately discarded.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
